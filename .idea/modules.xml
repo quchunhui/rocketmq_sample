@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://C:/git/SPBSDC/dscnPost_2.1/com.dscn.iml" filepath="C:/git/SPBSDC/dscnPost_2.1/com.dscn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rocketmq_sample.iml" filepath="$PROJECT_DIR$/rocketmq_sample.iml" />
+    </modules>
+  </component>
+</project>
