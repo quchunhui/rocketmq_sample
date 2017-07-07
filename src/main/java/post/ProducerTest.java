@@ -6,6 +6,7 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 
+import java.util.Random;
 import java.util.UUID;
 
 public class ProducerTest {
@@ -13,10 +14,18 @@ public class ProducerTest {
 
     public static void main(String[] args) {
         System.out.print("[----------]Start\n");
+        int pro_count = 1;
+        if (args.length > 0) {
+            pro_count = Integer.parseInt(args[0]);
+        }
         boolean result = false;
         try {
             ProducerStart();
-            SendMessage("qch_20170706", "hello rocketmq!");
+            for (int i = 0; i < pro_count; i++) {
+                String msg = "hello rocketmq!----" + UUID.randomUUID().toString();
+                SendMessage("qch_20170706", msg);
+                System.out.print(msg + "\n");
+            }
         }finally {
             producer.shutdown();
         }
@@ -27,7 +36,6 @@ public class ProducerTest {
         producer = new DefaultMQProducer("pro_qch_test");
         producer.setNamesrvAddr("192.168.6.3:9876;192.168.6.4:9876");
         producer.setInstanceName(UUID.randomUUID().toString());
-        producer.setVipChannelEnabled(false);
         try {
             producer.start();
         } catch (MQClientException e) {
